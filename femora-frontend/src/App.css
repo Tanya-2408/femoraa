@@ -1,0 +1,95 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 80px;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.nav-links a {
+  margin: 0 20px;
+  text-decoration: none;
+  color: #aaa;
+  font-size: 17px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.btn {
+  padding: 12px 26px;
+  border: none;
+  margin-left: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn.pink {
+  background-color: #ff4081;
+  color: #fff;
+}
+
+.btn.gold {
+  background-color: #ffd700;
+  color: #000;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  margin-top: 140px;
+  padding: 0 20px;
+}
+
+.headline {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #ff4081, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 25px;
+}
+
+.tagline {
+  font-size: 22px;
+  color: #ccc;
+  margin-bottom: 50px;
+}
+
+.hero-buttons {
+  margin-top: 20px;
+}
+
+.hero-buttons .btn {
+  font-size: 18px;
+  padding: 14px 32px;
+}
