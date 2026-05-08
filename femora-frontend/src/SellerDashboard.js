@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./styles.css";
 
 function SellerDashboard() {
-  const [, setActive] = useState("products");
 
   // PRODUCT STATE
   const [products, setProducts] = useState([
@@ -24,6 +23,7 @@ function SellerDashboard() {
 
   // FORM STATE
   const [showForm, setShowForm] = useState(false);
+
   const [newProduct, setNewProduct] = useState({
     name: "",
     category: "",
@@ -33,19 +33,31 @@ function SellerDashboard() {
 
   // HANDLE INPUT
   const handleChange = (e) => {
-    setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
+    setNewProduct({
+      ...newProduct,
+      [e.target.name]: e.target.value
+    });
   };
 
   // ADD PRODUCT
   const handleAddProduct = () => {
-    if (!newProduct.name || !newProduct.price) {
-      alert("Fill all fields");
+
+    if (
+      !newProduct.name ||
+      !newProduct.category ||
+      !newProduct.price ||
+      !newProduct.stock
+    ) {
+      alert("Please fill all fields");
       return;
     }
 
     setProducts([
       ...products,
-      { ...newProduct, status: "Active" }
+      {
+        ...newProduct,
+        status: "Active"
+      }
     ]);
 
     setNewProduct({
@@ -63,13 +75,15 @@ function SellerDashboard() {
 
       {/* SIDEBAR */}
       <div className="dash-sidebar">
-        
 
-        <p onClick={() => setActive("dashboard")}>📊 Dashboard</p>
+        <h2 className="logo">FEMORA</h2>
+
+        <p>📊 Dashboard</p>
         <p className="active">📦 My Products</p>
-        <p onClick={() => setActive("orders")}>🛒 Orders</p>
-        <p onClick={() => setActive("earnings")}>💰 Earnings</p>
-        <p onClick={() => setActive("reviews")}>⭐ Reviews</p>
+        <p>🛒 Orders</p>
+        <p>💰 Earnings</p>
+        <p>⭐ Reviews</p>
+
       </div>
 
       {/* MAIN */}
@@ -77,6 +91,7 @@ function SellerDashboard() {
 
         {/* HEADER */}
         <div className="dash-header">
+
           <h2>YOUR PRODUCTS</h2>
 
           <button
@@ -85,19 +100,24 @@ function SellerDashboard() {
           >
             + Add Product
           </button>
+
         </div>
 
-        {/* ADD FORM */}
+        {/* ADD PRODUCT FORM */}
         {showForm && (
+
           <div className="add-form">
+
             <input
+              type="text"
               name="name"
               value={newProduct.name}
               onChange={handleChange}
-              placeholder="Product name"
+              placeholder="Product Name"
             />
 
             <input
+              type="text"
               name="category"
               value={newProduct.category}
               onChange={handleChange}
@@ -105,6 +125,7 @@ function SellerDashboard() {
             />
 
             <input
+              type="number"
               name="price"
               value={newProduct.price}
               onChange={handleChange}
@@ -112,20 +133,23 @@ function SellerDashboard() {
             />
 
             <input
+              type="text"
               name="stock"
               value={newProduct.stock}
               onChange={handleChange}
-              placeholder="Stock"
+              placeholder="Stock Status"
             />
 
             <button onClick={handleAddProduct}>
-              Add
+              Add Product
             </button>
+
           </div>
         )}
 
-        {/* TABLE */}
+        {/* PRODUCT TABLE */}
         <table>
+
           <thead>
             <tr>
               <th>PRODUCT</th>
@@ -137,23 +161,32 @@ function SellerDashboard() {
           </thead>
 
           <tbody>
-            {products.map((p, i) => (
-              <tr key={i}>
-                <td>🍰 {p.name}</td>
-                <td>{p.category}</td>
-                <td>₹{p.price}</td>
-                <td>{p.stock}</td>
+
+            {products.map((product, index) => (
+
+              <tr key={index}>
+
+                <td>🍰 {product.name}</td>
+                <td>{product.category}</td>
+                <td>₹{product.price}</td>
+                <td>{product.stock}</td>
+
                 <td>
                   <span className="status active">
-                    {p.status}
+                    {product.status}
                   </span>
                 </td>
+
               </tr>
+
             ))}
+
           </tbody>
+
         </table>
 
       </div>
+
     </div>
   );
 }
