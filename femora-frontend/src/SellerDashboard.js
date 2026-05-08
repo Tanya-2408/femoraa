@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 
 function SellerDashboard() {
-  const [active, setActive] = useState("products");
+  const [, setActive] = useState("products");
 
   // PRODUCT STATE
   const [products, setProducts] = useState([
